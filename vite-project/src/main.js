@@ -1,7 +1,11 @@
-// import template from "../vite-project/templates/country.hbs";
+import Handlebars from 'handlebars';
+import templateSource from "../templates/country.hbs?raw";
 
 const country_research = document.querySelector("#country_research_form_SearchField");
-const county_list = document.querySelector("#country_research_countryList");
+const country_list = document.querySelector("#country_research_countryList");
+
+
+const template = Handlebars.compile(templateSource);
 
 
 const countries_API = `https://countries.dev/name/france`;
@@ -13,8 +17,8 @@ function get_data(name) {
     }
     return response.json();
 }).then((data) => {
-    // infoTake(data)
-    console.log(data);
+    infoTake(data[0]);
+    console.log(data[0]);
 })
 };
 
@@ -31,6 +35,7 @@ function input_write(e) {
 };
 
 function infoTake(data) {
-    county_list.innerHTML = template({data})
+    country_list.innerHTML = template(data);
+    // console.log(template({data}));
 }
 country_research.addEventListener("input", _.debounce( input_write, 300));
