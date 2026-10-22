@@ -15,3 +15,11 @@
 
     background-color: rgb(230, 238, 238);
 };
+
+ol, ul {
+    list-style: none;
+}
+
+.languages_list {
+    list-style: circle;
+}
