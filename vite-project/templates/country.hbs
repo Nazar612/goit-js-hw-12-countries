@@ -1,4 +1,5 @@
-<li class="country">
+{{#if (eq this.length 1)}}
+{{#each this}} <li class="country">
         <img src="{{flags.png}}" alt="">
         <h5>Capital: <span class="capital">{{capital}}</span></h5>
         <h5>Population: <span class="population">{{population}}</span></h5>
@@ -8,3 +9,7 @@
             {{#each languages}}<li class="language">{{name}}</li>{{/each}}
         </ul>
     </li>
+    {{/each}}
+    {{else}}
+    {{#each this}} <li class="country_one"><p class="name">{{this.name}}</p></li>{{/each}}
+    {{/if}}
